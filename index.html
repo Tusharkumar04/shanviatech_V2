@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem("shanvia-theme");
+          if (saved === "light") {
+            document.documentElement.classList.remove("dark");
+            document.documentElement.classList.add("light");
+          } else {
+            document.documentElement.classList.add("dark");
+            document.documentElement.classList.remove("light");
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <meta
+      name="description"
+      content="Shanvia Tech Solutions Private Limited (CIN: U72900WB2022PTC258015) — global software engineering studio specializing in enterprise web applications, cognitive AI, mobile apps, IoT, and cloud infrastructure."
+    />
+    <meta
+      name="keywords"
+      content="Shanvia Tech Solutions, AI Development Company, Enterprise Web Applications, Mobile App Development, IoT Development, ISO 27001 Certified IT Company"
+    />
+    <meta name="theme-color" content="#020a12" />
+    <title>Shanvia Tech Solutions — Enterprise Software, AI & Digital Engineering</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
