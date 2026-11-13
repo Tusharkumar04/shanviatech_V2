@@ -137,6 +137,76 @@ html.light .on-light .bg-foam {
   background-color: #eef4f9;
 }
 
+/* Light mode section & dark-card adaptations without altering layout */
+html.light #hero .text-white\/80,
+html.light #approach .text-white,
+html.light #approach .text-white\/90,
+html.light #services .text-white,
+html.light #services .text-white\/80,
+html.light #services .text-white\/70,
+html.light #services .text-white\/60,
+html.light #services .text-white\/50,
+html.light #services .text-white\/45,
+html.light #why-choose-us .text-white {
+  color: #0a1c2c;
+}
+
+html.light #approach,
+html.light #services,
+html.light #why-choose-us,
+html.light #blogs,
+html.light #contact {
+  border-color: rgba(10, 28, 44, 0.08);
+}
+
+html.light #hero .border-white\/10,
+html.light #hero .border-white\/15,
+html.light #approach .border-white\/10,
+html.light #approach .border-white\/12,
+html.light #approach .border-white\/15,
+html.light #services .border-white\/5,
+html.light #services .border-white\/8,
+html.light #services .border-white\/10,
+html.light #services .border-white\/15,
+html.light #why-choose-us .border-white\/5,
+html.light #why-choose-us .border-white\/10 {
+  border-color: rgba(10, 28, 44, 0.1);
+}
+
+html.light #hero .bg-white\/5,
+html.light #hero .bg-white\/\[0\.04\],
+html.light #approach .bg-white\/\[0\.04\] {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+html.light #services article {
+  background: #ffffff;
+  border-color: rgba(11, 108, 176, 0.14);
+  box-shadow: 0 12px 32px -12px rgba(10, 28, 44, 0.08);
+}
+
+html.light #services article > div:nth-child(2) {
+  background-color: #f0f6fb;
+  border-color: rgba(11, 108, 176, 0.12);
+}
+
+html.light #approach .rounded-3xl {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f6fb 100%);
+  box-shadow: 0 20px 50px -15px rgba(10, 28, 44, 0.1);
+}
+
+html.light #why-choose-us .bg-\[\#020a14\]\/95,
+html.light #why-choose-us .bg-\[\#051324\]\/85,
+html.light #why-choose-us .bg-\[\#020b16\]\/90,
+html.light #why-choose-us .bg-\[\#020a14\] {
+  background-color: #ffffff;
+  box-shadow: 0 12px 30px -14px rgba(10, 28, 44, 0.09);
+}
+
+html.light #why-choose-us .bg-\[\#020a14\] {
+  background-color: #f1f6fb;
+}
+
 /* ───────────────────────── Base ───────────────────────── */
 html {
   background: var(--color-abyss);

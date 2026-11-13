@@ -1,4 +1,8 @@
 // Approach Section Content
+import { useRef } from "react";
+import { useScrollTextProgress, getWordRevealStyle } from "@/utils/useScrollTextProgress";
+
+const APPROACH_TITLE_WORDS = ["Masters", "of", "Agile", "Development."];
 
 // Top paragraph text from the user's reference image
 const APPROACH_SUBTITLE =
@@ -189,6 +193,9 @@ function LaptopGraphScreen() {
    Main Approach Section Component
    ────────────────────────────────────────────────────────── */
 export default function ApproachSection() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const scrollProgress = useScrollTextProgress(headingRef);
+
   return (
     <section
       id="approach"
@@ -212,11 +219,43 @@ export default function ApproachSection() {
             </div>
 
             {/* Main Headline with Italic Serif Accent */}
-            <h2 className="font-display text-[clamp(2.5rem,5.2vw,4.4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-white mb-6">
+            {/* <h2 className="font-display text-[clamp(2.5rem,5.2vw,4.4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-white mb-6">
               Masters of{" "}
               <span className="font-serif italic font-normal text-[var(--color-cyan)] tracking-normal">
                 Agile Development.
               </span>
+            </h2> */}
+            <h2
+              ref={headingRef}
+              className="font-display text-[clamp(2.5rem,5.2vw,4.4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] mb-6"
+            >
+              {APPROACH_TITLE_WORDS.map((word, i) => {
+                const { factor, style } = getWordRevealStyle(
+                  scrollProgress,
+                  i,
+                  APPROACH_TITLE_WORDS.length
+                );
+                const isAccent = i >= 2;
+                return (
+                  <span
+                    key={i}
+                    style={style}
+                    className={`inline-block mr-[0.26em] transition-[opacity,transform,color] duration-200 ease-out select-none ${
+                      isAccent
+                        ? `font-serif italic font-normal tracking-normal ${
+                            factor > 0.4
+                              ? "text-[var(--color-cyan)] drop-shadow-[0_2px_16px_rgba(67,217,255,0.3)]"
+                              : "text-slate-400"
+                          }`
+                        : factor > 0.4
+                        ? "text-white drop-shadow-[0_2px_14px_rgba(255,255,255,0.22)]"
+                        : "text-slate-400"
+                    }`}
+                  >
+                    {word}
+                  </span>
+                );
+              })}
             </h2>
 
             {/* Sub-headline intro paragraph */}

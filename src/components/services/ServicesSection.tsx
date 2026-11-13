@@ -1,4 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import { useScrollTextProgress, getWordRevealStyle } from "@/utils/useScrollTextProgress";
+
+const SERVICES_HEADLINE_WORDS =
+  "As a leading provider of business and technology services".split(" ");
 
 interface ServiceItem {
   id: string;
@@ -482,6 +486,8 @@ export default function ServicesSection() {
   const [activeCardId, setActiveCardId] = useState<string>("branding");
   const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const scrollProgress = useScrollTextProgress(headingRef);
 
   // Scroll observer to activate cards automatically as user scrolls down the page
   useEffect(() => {
@@ -523,6 +529,38 @@ export default function ServicesSection() {
 
       {/* ── Direct 6-Card Grid (No Top Text - Starts Directly With Visual Content) ── */}
       <div className="relative z-10 max-w-[1600px] mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-cyan)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cyan)] animate-nd-ping" />
+            <span>OUR SERVICES</span>
+          </div>
+          <h2
+            ref={headingRef}
+            className="font-display text-[clamp(1.75rem,3.4vw,2.75rem)] font-bold leading-[1.18] tracking-[-0.02em] text-balance"
+          >
+            {SERVICES_HEADLINE_WORDS.map((word, i) => {
+              const { factor, style } = getWordRevealStyle(
+                scrollProgress,
+                i,
+                SERVICES_HEADLINE_WORDS.length
+              );
+              return (
+                <span
+                  key={i}
+                  style={style}
+                  className={`inline-block mr-[0.26em] transition-[opacity,transform,color] duration-200 ease-out select-none ${
+                    factor > 0.4
+                      ? "text-white drop-shadow-[0_2px_14px_rgba(255,255,255,0.22)]"
+                      : "text-slate-400"
+                  }`}
+                >
+                  {word}
+                </span>
+              );
+            })}
+          </h2>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch">
           {SERVICES_DATA.map((item, index) => {
             const isCurrentlyActive =

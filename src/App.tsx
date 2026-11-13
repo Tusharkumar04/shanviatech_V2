@@ -3,6 +3,11 @@ import Hero from "./components/hero/Hero";
 import AboutSection from "./components/about/AboutSection";
 import ApproachSection from "./components/process/ApproachSection";
 import ServicesSection from "./components/services/ServicesSection";
+import CapabilitiesSection from "./components/technology/CapabilitiesSection";
+import WhyChooseUsSection from "./components/metrics/WhyChooseUsSection";
+import TestimonialsSection from "./components/testimonials/TestimonialsSection";
+import BlogsSection from "./components/blogs/BlogsSection";
+import FooterSection from "./components/footer/FooterSection";
 import Cursor from "./components/ui/Cursor";
 import ScrollProgressBar from "./components/ui/ScrollProgressBar";
 import ScrollObserver from "./components/ui/ScrollObserver";
@@ -34,8 +39,20 @@ export default function App() {
       {/* Services Section: 6 High-Tech Cards with Graph Visuals & Scroll-Activated Text (Zero Top Text) */}
       <ServicesSection />
 
+      {/* Capabilities & Execution Section in Light Mode */}
+      <CapabilitiesSection />
+
+      {/* Why Choose Us Section with 100% SLA Fabric Architecture */}
+      <WhyChooseUsSection />
+
+      {/* Client Testimonials Section in Light Mode */}
+      <TestimonialsSection />
+
+      {/* Latest Insights & Articles Section */}
+      <BlogsSection />
+
       {/* Contact Section */}
-      <section id="contact" className="py-28 px-6 max-w-[1600px] mx-auto border-t border-white/10 mb-32">
+      {/* <section id="contact" className="py-28 px-6 max-w-[1600px] mx-auto border-t border-white/10 mb-32">
         <div className="text-center max-w-xl mx-auto">
           <span className="font-mono text-xs text-[var(--color-cyan)] uppercase tracking-wider">
             Let's Collaborate
@@ -56,7 +73,10 @@ export default function App() {
             </svg>
           </a>
         </div>
-      </section>
+      </section> */}
+
+      {/* Enterprise Footer */}
+      <FooterSection />
     </div>
   );
 }

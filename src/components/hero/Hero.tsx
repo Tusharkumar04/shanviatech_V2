@@ -169,7 +169,8 @@ function useTypewriter(
 
 export default function Hero() {
   const [activeCanvasIdx, setActiveCanvasIdx] = useState(0);
-  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+  // const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+  const mouseOffset = { x: 0, y: 0 };
 
   // DOM Refs for Typewriter
   const headingTextRef = useRef<HTMLSpanElement>(null);
@@ -185,22 +186,26 @@ export default function Hero() {
   );
 
   // Mouse parallax tracking with smooth requestAnimationFrame throttling
-  const mouseRafId = useRef<number | null>(null);
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
-    if (mouseRafId.current !== null) return;
-    mouseRafId.current = requestAnimationFrame(() => {
-      const nx = (clientX / window.innerWidth - 0.5) * 2;
-      const ny = (clientY / window.innerHeight - 0.5) * 2;
-      setMouseOffset({ x: nx, y: ny });
-      mouseRafId.current = null;
-    });
-  }, []);
+  // const mouseRafId = useRef<number | null>(null);
+  // const handleMouseMove = useCallback((e: React.MouseEvent) => {
+  //   const { clientX, clientY } = e;
+  //   if (mouseRafId.current !== null) return;
+  //   mouseRafId.current = requestAnimationFrame(() => {
+  //     const nx = (clientX / window.innerWidth - 0.5) * 2;
+  //     const ny = (clientY / window.innerHeight - 0.5) * 2;
+  //     setMouseOffset({ x: nx, y: ny });
+  //     mouseRafId.current = null;
+  //   });
+  // }, []);
 
   return (
+    // <section
+    //   id="home"
+    //   onMouseMove={handleMouseMove}
+    //   className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden pt-32 sm:pt-36 pb-16 sm:pb-20"
+    // >
     <section
       id="home"
-      onMouseMove={handleMouseMove}
       className="relative min-h-[100svh] w-full flex flex-col justify-center overflow-hidden pt-32 sm:pt-36 pb-16 sm:pb-20"
     >
       {/* ── Dynamic Ambient Motion Background Layer ── */}
